@@ -1,0 +1,32 @@
+{% extends "base.html.twig" %}
+
+{% block title %}Les équipements de Planetside 2
+{% endblock %}
+
+{% block body %}
+
+	<h1 class="text-center my-5">Les équipements de Planetside 2</h1>
+
+	<div class="container">
+		<div class="row">
+
+			{% for subTag in subTags %}
+				<div class="card bg-dark border-0 col-3 mt-5">
+					<p class="text-center mb-1"><img class="mx-auto" src="{{asset('images/' ~ subTag.icone)}}" alt="Image de {{subTag.nom}}"></p>
+					<p class="text-center mb-1">
+						<a class="stretched-link" href="{{path('subEquipements', {slug: subTag.nom})}}">{{subTag.nom}}</a>
+					</p>
+						<p class="text-center">
+                            {% for classe in subTag.classes %}
+                            <img class="logo-classe" src="{{asset('images/' ~ classe)}}" alt="(Toutes les classes)">
+                            {% endfor %}
+						</p>
+				</div>
+			{% endfor %}
+
+		</div>
+		<!-- fin de la row -->
+	</div>
+	<!-- fin du container -->
+
+{% endblock %}

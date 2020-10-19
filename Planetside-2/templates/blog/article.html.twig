@@ -1,0 +1,15 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}{{ article.title }}{% endblock %}
+
+{% block body %}
+
+
+	<h1 class="text-center my-5">{{ article.title }}</h1>
+
+	<div>
+		{{ article.text | raw }}
+	</div>
+
+
+{% endblock %}

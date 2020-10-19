@@ -1,0 +1,16 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}{{ nouveau ? 'Créer un nouvel article' : article.title }}{% endblock %}
+
+{% block body %}
+
+	{% if nouveau %}
+		<h1>Créer un nouvel article</h1>
+	{% else %}
+		<a href="{{ path('article_crud', { id: article.id, action: 'delete' }) }}" class="text-danger float-right">Supprimer</a>
+		<h1>{{ article.title }}</h1>
+	{% endif %}
+	
+	{{ form(form) }}
+
+{% endblock %}

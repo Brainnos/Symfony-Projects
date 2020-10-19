@@ -1,0 +1,57 @@
+body {
+    color: coral;
+}
+
+
+a {
+    color: coral !important;
+}
+
+aside {
+    position: relative;
+}
+
+#asidepermanent {
+    position: sticky;
+    top: 10em;
+}
+
+.card-item {
+    transition:all 0.5s;
+}
+
+.card-item a {
+    text-decoration: none;
+}
+
+.card-item:hover {
+    background-color: rgba(255, 0, 0, 0.1) !important;
+    transform: scale(1.05);
+    box-shadow: 5px 5px 10px #888888;
+    z-index: 2;
+
+}
+
+.card-accueil {
+    background-color: rgba(255, 255, 255, 0.1);
+}
+
+.logo-classe {
+    width: 24px;
+    height: 24px;
+}
+
+.btn-test {
+    background-image: url(https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcTTpsGHmnMIyvSfcAnPobGFKD7sYd5VIbKGgYYIaSO3Ag6k730b&usqp=CAU);
+    background-size:     cover;                      /* <------ */
+    background-repeat:   no-repeat;
+    background-position: center center;
+}
+
+.footer {
+    background-color: black;
+}
+
+.img-centre {
+    margin: auto;
+}

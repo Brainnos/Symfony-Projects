@@ -1,0 +1,60 @@
+security:
+    encoders:
+        App\Entity\Users:
+            algorithm: auto
+
+    # https://symfony.com/doc/current/security.html#where-do-users-come-from-user-providers
+    providers:
+        # used to reload user from session & other features (e.g. switch_user)
+        app_user_provider:
+            entity:
+                class: App\Entity\Users
+                property: email
+    firewalls:
+        dev:
+            pattern: ^/(_(profiler|wdt)|css|images|js)/
+            security: false
+        main:
+            anonymous: lazy
+            user_checker: App\Security\UserChecker
+            guard:
+                authenticators:
+                    - App\Security\UsersAuthenticator
+            logout:
+                path: app_logout
+                # where to redirect after logout
+                target: accueil
+
+            # activate different ways to authenticate
+            # https://symfony.com/doc/current/security.html#firewalls-authentication
+
+            # https://symfony.com/doc/current/security/impersonating_user.html
+            switch_user: true
+
+    # Easy way to control access for large sections of your site
+    # Note: Only the *first* access control that matches will be used
+    access_control:
+        - { path: ^/staff, roles: ROLE_STAFF }
+        - { path: ^/efconnect, role: ROLE_STAFF }
+        - { path: ^/elfinder, role: ROLE_STAFF }
+
+    role_hierarchy:
+        ROLE_STAFF: [ROLE_MEMBRE, ROLE_ALLOWED_TO_SWITCH]
+        ROLE_MEMBRE: IS_AUTHENTICATED_ANONYMOUSLY
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

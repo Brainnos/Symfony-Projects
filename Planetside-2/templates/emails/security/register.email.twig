@@ -1,0 +1,9 @@
+Bonjour {{user.pseudo}},
+
+<br><br>
+
+Votre inscription a bien été prise en compte. Pour la valider, merci de bien vouloir cliquer sur le lien ci-dessous.
+
+<br><br>
+{% set link = absolute_url(path('register_validate_email', {email: user.email, token: user.token})) %}
+<a href="{{link}}">{{link}}</a>

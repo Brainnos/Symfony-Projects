@@ -1,0 +1,15 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}{{ vehicule.nameFr }}{% endblock %}
+
+{% block body %}
+
+
+	<h1 class="text-center my-5">{{ vehicule.nameFr }}</h1>
+
+	<div>
+		{{ vehicule.text | raw }}
+	</div>
+
+{% endblock %}
+

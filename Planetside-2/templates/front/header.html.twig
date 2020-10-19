@@ -1,0 +1,86 @@
+{% block stylesheets %}
+	<link rel="stylesheet" href="{{ asset('css/header.css')}}">
+{% endblock %}
+
+<nav class="navbar navbar-expand-lg mb-4 fixed-top">
+	<div class="container">
+
+		<div class="collapse navbar-collapse" id="navbarSupportedContent">
+			<ul class="navbar-nav mx-auto">
+
+				<li class="nav-item">
+					<a class="nav-link" href="{{ path('accueil') }}">Accueil
+						<span class="sr-only">(current)</span>
+					</a>
+				</li>
+
+				<li class="nav-item">
+					<a class="nav-link" href="{{path('guidesDebutant')}}">Guide du débutant</a>
+				</li>
+
+
+				<li class="nav-item">
+					<a class="nav-link" href="{{path('guides')}}">Guides</a>
+				</li>
+
+				<li class="nav-item dropdown">
+					<a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+						Classes
+					</a>
+					<div class="dropdown-menu bg-secondary" aria-labelledby="navbarDropdown">
+						{% for classe in classes %}
+							<a class="dropdown-item" href="{{ path('article', { id: classe.id }) }}">{{classe.title}}</a>
+						{% endfor %}
+					</div>
+				</li>
+
+				<li class="nav-item">
+					<a class="nav-link" href="{{path('armes')}}">Armes</a>
+				</li>
+
+				<li class="nav-item">
+					<a class="nav-link" href="{{path('equipements')}}">Equipements</a>
+				</li>
+
+				<li class="nav-item">
+					<a class="nav-link" href="{{path('vehicules')}}">Véhicules</a>
+				</li>
+			</ul>
+
+			<ul class="navbar-nav mon-compte">
+				{% if app.user %}
+					<div class="dropdown">
+						<button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+							Compte
+						</button>
+						<div class="dropdown-menu">
+							<li class="nav-item">
+								<a href="#" class="nav-link">Mon compte</a>
+							</li>
+
+							{% if is_granted("ROLE_STAFF") %}
+								<li class="nav-item">
+									<a href="{{path('lesCrud')}}" class="nav-link">Centralisation des modifications</a>
+								</li>
+							{% endif %}
+
+							<li class="nav-item">
+								<a href="{{path('password_update')}}" class="nav-link">Changer mon mot de passe</a>
+							</li>
+							<div class="dropdown-divider"></div>
+							<li class="nav-item">
+								<a href="{{path('app_logout')}}" class="nav-link">Déconnexion</a>
+							</li>
+						</div>
+					</div>
+				{% endif %}
+			</ul>
+		</div>
+	</div>
+</nav>
+
+{% block javascripts %}
+	<script src="https://code.jquery.com/jquery-3.4.1.js" integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU=" crossorigin="anonymous"></script>
+
+	<script src="{{asset('js/header.js')}} "></script>
+{% endblock %}

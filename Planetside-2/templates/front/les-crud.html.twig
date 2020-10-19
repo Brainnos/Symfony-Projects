@@ -1,0 +1,16 @@
+{% extends "base.html.twig" %}
+
+{% block title %}La centralisation des modifications{% endblock %}
+
+{% block body %}
+
+<h1 class="text-center my-5">La centralisation des modifications</h1>
+
+<div class="row my-5">
+
+<div class="col mx-3 text-center card"><a class="stretched-link" href="{{path('armes_index')}}">Les armes</a></div>
+<div class="col mx-3 text-center card"><a class="stretched-link" href="{{path('vehicules_index')}}">Les véhicules</a></div>
+<div class="col mx-3 text-center card"><a class="stretched-link" href="{{path('articles')}}">Tous les autres articles</a></div>
+
+</div>
+{% endblock %}

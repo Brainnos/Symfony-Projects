@@ -1,0 +1,17 @@
+{% extends "base.html.twig" %}
+
+{% block title %}Les guides du débutant
+{% endblock %}
+
+{% block body %}
+
+	<h1 class="text-center my-5">Les guides</h1>
+
+	<div class="row">
+
+		{% for article in articles %}
+			{% include 'blog/itemArticle.html.twig' with { article: article } %}
+		{% endfor %}
+	</div>
+
+{% endblock %}

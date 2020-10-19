@@ -1,0 +1,33 @@
+   
+  .dropdown-toggle::after {
+     transition: transform 0.15s linear; 
+  }
+   
+  .show.dropdown .dropdown-toggle::after {
+    transform: translateY(3px);
+  }
+
+  .dropdown-menu {
+    margin-top: 0;
+  }
+
+  nav > div {
+    background-color: bisque;
+  }
+
+  nav li a:before {
+    content: "|";
+    color: #ccc;
+    display: inline-block;
+    font-size: 100%;
+    padding-right: 10px;
+  }
+
+
+  .dropdown-item::before {
+    content: none;
+  }
+
+  .mon-compte a::before {
+    content: none;
+  }

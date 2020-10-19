@@ -1,0 +1,55 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Armes index
+{% endblock %}
+
+{% block body %}
+
+	<h1 class="text-center my-5">Les modifications pour les armes</h1>
+
+	<div class="row">
+		<div class="col">
+			<h2>Liste des armes / edition d'armes</h2>
+
+			<ul>
+				{% for subTag in subTags %}
+					<li>
+						<a class="btn btn-primary mb-3" data-toggle="collapse" href="#collapse{{subTag.id}}" role="button" aria-expanded="false" aria-controls="collapse{{subTag.id}}">
+							{{subTag.nom}}
+						</a>
+					</li>
+
+					<div class="collapse" id="collapse{{subTag.id}}">
+						<ul>
+							{% for arme in armes %}
+
+								{% if arme.itemCategoryId == subTag.id %}
+									<li class="my-2">
+										<a href="{{ path('armes_show', { id: arme.id }) }}">Titre :
+											{{arme.nameFr}}
+											/</a>
+										<a class="text-primary" href="{{ path('armes_show', {'id': arme.id}) }}">afficher
+										</a>/
+										<a class="text-success" href="{{ path('armes_edit', {'id': arme.id}) }}">editer</a>
+										{% if arme.active == 0 %}
+											<span>
+												/ Inactif</span>
+										{% endif %}
+
+									</li>
+								{% endif %}
+
+							{% endfor %}
+						</ul>
+					</div>
+
+				{% endfor %}
+			</ul>
+		</div>
+
+		<div class="col">
+			<h2>Création d'une nouvelle arme</h2>
+			<a class="btn btn-success" href="{{ path('armes_new') }}">Créer une nouvelle arme</a>
+		</div>
+	</div>
+{% endblock %}

@@ -1,0 +1,24 @@
+{% extends "base.html.twig" %}
+
+{% block title %}Les classes de Planetside2
+{% endblock %}
+
+{% block body %}
+
+	<h1 class="text-center my-5">Les classes de Planetside 2</h1>
+
+	<div class="row">
+
+		{% for article in articles %}
+			<div class="card bg-dark col-3 mx-auto border-0 mt-5" style="width: 10rem;">
+				<img src="{{ asset('uploads/articles/' ~ article.image) }}" class="card-img-top mx-auto stretched-link" style="width: 75px" alt="...">
+				<div class="card-body">
+					<h3 class="card-title text-center">
+						<a class="stretched-link" href="{{path('article', {id: article.id})}} ">{{article.title}}</a>
+					</h3>
+				</div>
+			</div>
+		{% endfor %}
+	</div>
+
+{% endblock %}

@@ -1,0 +1,44 @@
+{% extends "base.html.twig" %}
+
+{% block title %}Les armes de Planetside 2
+{% endblock %}
+
+{% block body %}
+
+	<h1 class="text-center my-5">Les véhicules de Planetside 2</h1>
+
+		<div class="row">
+
+			{% for subTag in subTags %}
+				<div class="card bg-dark border-0 col-12 mt-5">
+					
+						<h2 class="text-center mb-1">
+							{{subTag.nom}}
+						</h2>
+					
+
+					<div class="row">
+						{% for vehicule in vehicules %}
+						{% if vehicule.subTag.id == subTag.id %}
+						<div class="card-item card bg-dark col-3 mx-auto border-0 mt-5" style="width: 18rem;">
+							<img src="http://census.daybreakgames.com{{vehicule.imagePath}}" class="card-img-top" alt="...">
+							<div class="card-body">
+								<h5 class="card-title text-center">
+									<a class="stretched-link" href="{{path('vehicules_show', {id: vehicule.id})}} ">{{vehicule.nameFr}}</a>
+								</h5>
+								<p class="card-text">{{vehicule.description}}</p>
+		
+							</div>
+						</div>
+		
+						{% endif %}
+						{% endfor %}
+					</div>
+		
+				</div>
+
+				{% endfor %}
+		</div>
+		<!-- fin de la row -->
+
+{% endblock %}

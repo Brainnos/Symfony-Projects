@@ -1,0 +1,14 @@
+{% extends "base.html.twig" %}
+
+{% block title %}{{title}} de Planetside 2{% endblock %}
+
+{% block body %}
+
+<h1 class="text-center my-5">{{title}}</h1>
+
+<div class="row">
+
+    {% for article in articles %}
+        {% include 'blog/itemArticle.html.twig' with { article: article } %}
+    {% endfor %}
+</div>{% endblock %}

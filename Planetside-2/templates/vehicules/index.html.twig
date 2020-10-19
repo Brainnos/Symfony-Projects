@@ -1,0 +1,54 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Vehicules index
+{% endblock %}
+
+{% block body %}
+
+	<h1 class="text-center my-5">Les modifications pour les véhicules</h1>
+
+	<div class="row">
+		<div class="col">
+			<h2>Liste des véhicules / edition d'un véhicule</h2>
+			<ul>
+				{% for subTag in subTags %}
+					<li>
+						<a class="btn btn-primary mb-3" data-toggle="collapse" href="#collapse{{subTag.id}}" role="button" aria-expanded="false" aria-controls="collapse{{subTag.id}}">
+							{{subTag.nom}}
+						</a>
+					</li>
+
+					<div class="collapse" id="collapse{{subTag.id}}">
+						<ul>
+							{% for vehicule in vehicules %}
+
+								{% if vehicule.subtag.id == subTag.id %}
+									<li class="my-2">
+										<a href="{{ path('armes_show', { id: vehicule.id }) }}">Titre :
+											{{vehicule.nameFr}}
+											/</a>
+										<a class="text-primary" href="{{ path('vehicules_show', {'id': vehicule.id}) }}">afficher
+										</a>/
+										<a class="text-success" href="{{ path('vehicules_edit', {'id': vehicule.id}) }}">editer</a>
+										{% if vehicule.active == 0 %}
+											<span>
+												/ Inactif</span>
+										{% endif %}
+
+									</li>
+								{% endif %}
+
+							{% endfor %}
+						</ul>
+					</div>
+
+				{% endfor %}
+			</ul>
+		</div>
+
+		<div class="col">
+			<h2>Création d'un nouveau véhicule</h2>
+			<a class="btn btn-success" href="{{ path('vehicules_new') }}">Créer un nouveau véhicule</a>
+		</div>
+	</div>
+{% endblock %}

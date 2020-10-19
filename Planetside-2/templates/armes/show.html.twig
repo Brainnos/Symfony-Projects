@@ -1,0 +1,14 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}{{ arme.nameFr }}{% endblock %}
+
+{% block body %}
+
+
+	<h1 class="text-center my-5">{{ arme.nameFr }}</h1>
+
+	<div>
+		{{ arme.text | raw }}
+	</div>
+
+{% endblock %}

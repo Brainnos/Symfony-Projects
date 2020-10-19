@@ -1,0 +1,49 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}ARTICLES
+{% endblock %}
+
+{% block body %}
+
+<h1 class="text-center my-5">Les modifications des articles</h1>
+
+	<div class="row">
+		<div class="col">
+
+			<h2>Liste des articles / edition d'un article</h2>
+
+			<ul>
+				{% for tag in tags %}
+					<li>
+						<a class="btn btn-primary mb-3" data-toggle="collapse" href="#collapse{{tag.id}}" role="button" aria-expanded="false" aria-controls="collapse{{tag.id}}">
+							{{tag.nom}}
+						  </a>
+					</li>
+					  
+					  <div class="collapse" id="collapse{{tag.id}}">
+					<ul>
+						{% for article in tag.getArticles %}
+		
+						<li class="my-2">
+							<a href="{{ path('article', { id: article.id }) }}">Titre : {{article.title}} /</a>
+							<a href="{{ path('article_crud', { id: article.id }) }}" class="text-primary">Modifier</a>
+							{% if article.active == 0 %}
+							<span> / Inactif</span>{% endif %}
+						</li>
+				
+					{% endfor %}
+					</ul>
+				</div>
+			
+			{% endfor %}
+			</ul>
+		</div class="col">
+
+		<div class="col">
+			<h2>Création d'un nouvel article</h2>
+			<a class="btn btn-success" href="{{ path('article_crud', {id: 0}) }}">Créer un nouvel article</a>
+		</div>
+
+	</div>
+
+{% endblock %}

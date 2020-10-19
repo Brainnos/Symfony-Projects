@@ -1,0 +1,16 @@
+    <div class="row">
+
+        {% for lastArticle in lastArticles %}
+    
+        <div class="card card-accueil my-5 col-12">
+          <div class="card-body">
+            <h3 class="card-title text-center">{{lastArticle.title}}</h3>
+            <p>{{lastArticle.text | raw }} </p>
+            <p class="card-text"><small class="text-muted">Posté le {{lastArticle.dateCreation | date("d:m:Y")}} </small></p>
+            <a href="{{path('article', {id: lastArticle.id})}}" class="btn btn-primary stretched-link">Lire l'article</a>
+          </div>
+        </div>
+        <div></div>
+        {% endfor %}
+</div>
+

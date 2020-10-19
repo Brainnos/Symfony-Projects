@@ -1,0 +1,46 @@
+{% extends "base.html.twig" %}
+
+{% block title %}
+	{{title}} de Planetside 2
+{% endblock %}
+
+{% block body %}
+
+	<h1 class="text-center my-5">{{title}}</h1>
+
+	<p class="text-center">
+		{% for key, value in result %}
+
+			{% if not loop.first %}
+				<a href="#{{key}}" class="btn btn-primary mt-5">Armes
+					{{key}}</a>
+			{% endif %}
+
+		{% endfor %}
+	</p>
+	
+	{% for key,value in result %}
+
+		{% if not loop.first %}
+			<p id="{{key}}" class="my-3">
+				<a class="btn-test btn" href="#">Retour en haut de page</a>
+			</p>
+		{% endif %}
+		<div class="row">
+			{% for arme in value %}
+				<div class="card-item card bg-dark col-3 mx-auto border-0 mt-5" style="width: 18rem;">
+					<img src="http://census.daybreakgames.com{{arme.imagePath}}" class="card-img-top" alt="...">
+					<div class="card-body">
+						<h3 class="card-title text-center">
+							<a class="stretched-link" href="{{path('armes_show', {id: arme.id})}} "></a>{{arme.nameFr}}</a>
+						</h3>
+						<p class="card-text">{{arme.description}}</p>
+
+					</div>
+				</div>
+			{% endfor %}
+		</div>
+
+	{% endfor %}
+
+{% endblock %}
